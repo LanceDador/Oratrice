@@ -4,7 +4,7 @@ OD = OopDesign()
 quit_code = 1
 
 
-def main():
+def main(user):
     global quit_code
     quit_code = 1
     # ------------------------------------- Window Initialization with Scrollbar:------------------------------------ #
@@ -108,27 +108,30 @@ def main():
         quit_code = "account"
         window.destroy()
 
-    OD.new_command_button(content_frame, "INFO", 50, 25, "WHITE", "#38688F", 15, 2, info)
-    OD.new_command_button(content_frame, "PAYROLL", 200, 25, "WHITE", "#38688F", 15, 2, payroll)
-    OD.new_command_button(content_frame, "ACCOUNT", 350, 25, "WHITE", "#38688F", 15, 2, account)
+    OD.new_command_button(content_frame, "INFO", 50, 70, "WHITE", "#38688F", 15, 2, info)
+    OD.new_command_button(content_frame, "PAYROLL", 200, 70, "WHITE", "#38688F", 15, 2, payroll)
+    OD.new_command_button(content_frame, "ACCOUNT", 350, 70, "WHITE", "#38688F", 15, 2, account)
 
-    OD.new_command_button(content_frame, "ADD INFO", 550, 25, "WHITE", "#DCB04F", 15, 2, add_info)
-    OD.new_command_button(content_frame, "ADD PAYROLL", 700, 25, "WHITE", "#DCB04F", 15, 2, add_payroll)
-    OD.new_command_button(content_frame, "ADD ACCOUNT", 850, 25, "WHITE", "#DCB04F", 15, 2, add_account)
+    OD.new_command_button(content_frame, "ADD INFO", 550, 70, "WHITE", "#DCB04F", 15, 2, add_info)
+    OD.new_command_button(content_frame, "ADD PAYROLL", 700, 70, "WHITE", "#DCB04F", 15, 2, add_payroll)
+    OD.new_command_button(content_frame, "ADD ACCOUNT", 850, 70, "WHITE", "#DCB04F", 15, 2, add_account)
 
-    OD.new_command_button(content_frame, "LOGOUT", 1000, 25, "WHITE", "GRAY", 15, 2, close)
+    OD.new_command_button(content_frame, "LOGOUT", 1000, 70, "WHITE", "GRAY", 15, 2, close)
 
     # ------------------ Return Main Loop ------------------ #
+    #   prints the current user
+    OD.new_label(content_frame, f"Logged in as: {user[1]} ({user[4]})", 900, 20)
+
     window.mainloop()
 
 
-def main_call():
-    main()
+def main_call(user):
+    main(user)
     return quit_code
 
 
 if __name__ == "__main__":
-    main()
+    main(['', '', '', '', ''])
 
 # Reference:
 # https://www.plus2net.com/python/tkinter-sqlite.php

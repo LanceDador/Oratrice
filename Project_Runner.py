@@ -5,34 +5,35 @@ from Lab8_D import main_call as lab_d
 from Lab8_AdminPage import main_call as admin
 
 
-def admin_loop():
+def admin_loop(info):
     while True:
         #   opens respective gui based on button pressed
-        match admin():
+        match admin(info):
             case 1:
                 break
             case "info":
-                lab_b()
+                lab_b(info)
             case "payroll":
-                lab_c()
+                lab_c(info)
             case "account":
-                lab_d()
+                lab_d(info)
 
 
 def main():
     while True:
+        info = login()
         #   opens login gui, then opens respective gui based on user account type
-        match login()[4]:
+        match info[4]:
             case "Quit":
                 break
             case "HR":
-                lab_b()
+                lab_b(info)
             case "Accounting":
-                lab_c()
+                lab_c(info)
             case "Employee":
-                lab_d()
+                lab_d(info)
             case "Admin":
-                admin_loop()
+                admin_loop(info)
 
 
 if __name__ == "__main__":

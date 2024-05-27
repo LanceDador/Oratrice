@@ -262,19 +262,22 @@ def frame_startup_admin(sub_frame):
     return heading_frame, content_frame, data_frame
 
 
-# ------------------------ Other Optimizations ------------------------#
+# ------------------------ Other Functions ------------------------#
 def change_data(widget, data):
+    #   modifies the text of an existing Entry widget
     clear_data(widget)
     widget.insert(0, str(data))
     widget.configure(state="readonly")
 
 
 def clear_data(widget):
+    #   deletes the text of an existing Entry widget
     widget.configure(state="normal")
     widget.delete(0, "end")
 
 
 def popup_box(message):
+    #   creates a new Tkinter window with a short message
     root = tk.Tk()
     root.title("Furina's Employee Program")
     root.geometry("200x100+588+284")
@@ -283,17 +286,20 @@ def popup_box(message):
 
 
 def open_pic():
+    #   opens a file explorer window to search for a picture filepath
     filetypes = (('JPG', '*.jpg'), ('PNG', '*.png'), ('All Files', '*.*'))
     filepath = tkinter.filedialog.askopenfilename(title="Search Picture Path", initialdir="/", filetypes=filetypes)
     return filepath
 
 
 def clear_widget(source_frame):
+    #   deletes all widgets created on a frame
     for child in source_frame.winfo_children():
         child.destroy()
 
 
 def grid_cell_1(frame, data, r, c, align):
+    #   creates an Entry widget that is placed using the grid() command
     text = StringVar()
     text.set(data)
     cell = tk.Entry(frame, width=5, textvariable=text, font=(hoyo_font, 7), justify=align)
@@ -302,6 +308,7 @@ def grid_cell_1(frame, data, r, c, align):
 
 
 def grid_cell_2(frame, data, r, c, align):
+    #   creates an Entry widget that is placed using the grid() command
     text = StringVar()
     text.set(data)
     cell = tk.Entry(frame, width=12, textvariable=text, font=(hoyo_font, 10), justify=align)

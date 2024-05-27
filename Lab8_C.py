@@ -3,7 +3,7 @@ import sqlite3
 OD = OopDesign()
 
 
-def main():
+def main(user):
     # ------------------------------------- Window Initialization with Scrollbar:------------------------------------ #
     window, sub_frame = window_startup("Lab8_C", "1366x768")
 
@@ -315,13 +315,16 @@ def main():
     OD.new_command_button(summary_frame, "NEW", 1050, 50, "WHITE", "#DCB04F", 10, 2, clear)
 
     # ------------------ Return Main Loop ------------------ #
+    #   prints the current user
+    OD.new_label(info_frame, f"Logged in as: {user[1]} ({user[4]})", 900, 20)
+
     window.mainloop()
 
 
-def main_call():
-    main()
+def main_call(user):
+    main(user)
     return
 
 
 if __name__ == "__main__":
-    main()
+    main(['', '', '', ''])
