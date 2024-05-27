@@ -117,6 +117,8 @@ def main(user):
         for items in user_info_list:
             clear_data(items)
         clear_data(employee_number)
+        if user[4] == "Employee":
+            change_data(employee_number, user[0])
 
     OD.new_command_button(info_frame, "Search", 800, 375, "WHITE", "#C83B48", 10, 1, search)
     OD.new_command_button(info_frame, "UPDATE", 400, 430, "WHITE", "#38688F", 15, 2, update)
@@ -126,7 +128,10 @@ def main(user):
     # ------------------ Return Main Loop ------------------ #
     #   prints the current user
     OD.new_label(info_frame, f"Logged in as: {user[1]} ({user[4]})", 900, 20)
-
+    #   if logged-in user is an employee, limit editing to own account
+    if user[4] == "Employee":
+        change_data(employee_number, user[0])
+        search()
     window.mainloop()
 
 
@@ -136,4 +141,4 @@ def main_call(user):
 
 
 if __name__ == "__main__":
-    main(['', '', '', ''])
+    main(['', '', '', '', ''])

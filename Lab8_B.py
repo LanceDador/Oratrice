@@ -127,7 +127,7 @@ def main_call(user):
 
 
 if __name__ == "__main__":
-    main(['', '', '', ''])
+    main(['', '', '', '', ''])
 
 # References:
 # https://www.youtube.com/watch?v=0WafQCaok6g
