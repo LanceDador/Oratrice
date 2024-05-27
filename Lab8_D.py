@@ -86,9 +86,8 @@ def main(user):
                 retrieved2 = cur.fetchone()
                 print(retrieved2)
                 print(data[1].get())
-                if retrieved2 is not None:
-                    if retrieved2[0] != data[0].get():
-                        popup_box("Username already taken!")
+                if retrieved2 is not None and str(retrieved2[0]) != data[0].get():
+                    popup_box("Username already taken!")
                 else:
                     columns = ["employee_number", "username", "password", "confirm_password", "user_type",
                                "user_status"]
