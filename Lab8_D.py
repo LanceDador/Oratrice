@@ -64,6 +64,7 @@ def main(user):
             cur = con.cursor()
             cur.execute(f"SELECT * FROM User_Info WHERE employee_number = {employee_number.get()}")
             data = [employee_number, username, password, confirm_password, user_type, user_status]
+            old_un = username.get()
             retrieve_data = cur.fetchone()
             if retrieve_data is None:
                 #   if user info does not exist, create a new row of data
@@ -81,10 +82,13 @@ def main(user):
                 popup_box("Successfully Added New Data!")
             else:
                 #   if user info already exists, check if username is already taken by different account
-                print(retrieve_data)
+                cur.execute(f"SELECT * FROM User_Info WHERE username='{username.get()}'")
+                retrieved2 = cur.fetchone()
+                print(retrieved2)
                 print(data[1].get())
-                if retrieve_data[1] != data[1].get():
-                    popup_box("Username already taken!")
+                if retrieved2 is not None:
+                    if retrieved2[0] != data[0].get():
+                        popup_box("Username already taken!")
                 else:
                     columns = ["employee_number", "username", "password", "confirm_password", "user_type",
                                "user_status"]
@@ -97,6 +101,7 @@ def main(user):
 
                     con.execute(query1)
                     con.commit()
+
             con.close()
         else:
             popup_box("Password does not match!")
