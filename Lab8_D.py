@@ -64,7 +64,6 @@ def main(user):
             cur = con.cursor()
             cur.execute(f"SELECT * FROM User_Info WHERE employee_number = {employee_number.get()}")
             data = [employee_number, username, password, confirm_password, user_type, user_status]
-            old_un = username.get()
             retrieve_data = cur.fetchone()
             if retrieve_data is None:
                 #   if user info does not exist, create a new row of data
