@@ -54,7 +54,6 @@ def main(user):
                 change_data(entry_list[i], data[i])
             #   attaches the user's uploaded image into the GUI
             OD.new_image(info_frame, rows[-1], 53, 33, 290, 290)
-            popup_box("User Found!")
         except TypeError:
             popup_box("User Not Found!")
 
@@ -117,6 +116,7 @@ def main(user):
         for items in user_info_list:
             clear_data(items)
         clear_data(employee_number)
+        OD.new_image(info_frame, "Resources/Dark Furina.png", 53, 33, 290, 290)
         if user[4] == "Employee":
             change_data(employee_number, user[0])
 
